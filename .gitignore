@@ -50,9 +50,9 @@ fabric.properties
 
 *.iml
 modules.xml
-.idea/misc.xml
-*.ipr
 .idea/compiler.xml
 .idea/copyright/profiles_settings.xml
+.idea/misc.xml
+*.ipr
 
 # End of https://www.gitignore.io/api/intellij

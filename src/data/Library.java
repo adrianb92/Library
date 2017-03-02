@@ -1,6 +1,8 @@
 package data;
 
-public class Library {
+import java.io.Serializable;
+
+public class Library implements Serializable{
     public static final int MAX_PUBLICATIONS = 2000;
     private int publicationsNumber;
     private Publication[] publications;

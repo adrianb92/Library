@@ -1,6 +1,8 @@
 package data;
 
-public class Publication {
+import java.io.Serializable;
+
+public class Publication implements Serializable {
     private String title;
     private int releaseDate;
     private String publisher;

@@ -4,8 +4,10 @@ import data.Book;
 import data.Magazine;
 import data.Library;
 import utils.DataReader;
+import utils.FileManager;
 import utils.LibraryUtils;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
@@ -13,10 +15,18 @@ public class LibraryControl {
 
     private Library library;
     private DataReader dataReader;
+    private FileManager fileManager;
 
     public LibraryControl(){
-        library = new Library();
         dataReader = new DataReader();
+        fileManager = new FileManager();
+        try{
+            library = fileManager.readLibraryFromFile();
+            System.out.println("Library data loaded!");
+        }catch(IOException | ClassNotFoundException ex){
+            library = new Library();
+            System.out.println("New library data created!");
+        }
     }
 
     public void controlLoop(){
@@ -39,6 +49,7 @@ public class LibraryControl {
                     printMagazines();
                     break;
                 case EXIT:
+                    exit();
                     break;
                 }
             }catch(InputMismatchException ex){
@@ -48,6 +59,10 @@ public class LibraryControl {
             }
         }while(option != Option.EXIT);
         dataReader.close();
+    }
+
+    private void exit(){
+        fileManager.writeLibraryToFile(library);
     }
 
     private void printMagazines() {

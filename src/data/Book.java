@@ -1,7 +1,3 @@
-/**
- * Created by adrian on 19.10.16.
- */
-
 package data;
 
 public class Book extends Publication{
